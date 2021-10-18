@@ -1,0 +1,29 @@
+{
+  "audit_rules": [
+    {
+      "actions": [
+        "always",
+        "exit"
+      ],
+      "fields": [
+        {
+          "name": "dir",
+          "op": "eq",
+          "value": "/etc"
+
+        },
+        {
+          "name": "success",
+          "op": "eq",
+          "value": 0
+        }
+      ],
+      "syscalls": [
+        "open",
+        "truncate"
+      ]
+    }
+  ]
+}
+
+-a always,exit -F arch=b64 -S fchown -F auid>=500 -F auid!=-1 -F key=T1166_Seuid_and_Setgid
